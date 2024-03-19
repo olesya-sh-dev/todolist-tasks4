@@ -43,18 +43,31 @@ function App() {
   }
 
   let [filter, setFilter] = useState<FilterValuesType>("all");
+  //   const filteredTasks = () => {
+  //     let tasksForTodolist = tasks;
+
+  //     if (filter === "active") {
+  //       return (tasksForTodolist = tasks.filter((t) => !t.isDone));
+  //     }
+  //     if (filter === "completed") {
+  //       return (tasksForTodolist = tasks.filter((t) => t.isDone));
+  //     }
+  //     return tasksForTodolist;
+  //   };
+
   const filteredTasks = () => {
     let tasksForTodolist = tasks;
+    switch (filter) {
+      case "active":
+        return (tasksForTodolist = tasks.filter((t) => !t.isDone));
 
-    if (filter === "active") {
-      return (tasksForTodolist = tasks.filter((t) => !t.isDone));
+      case "completed":
+        return (tasksForTodolist = tasks.filter((t) => t.isDone));
+
+      default:
+        return tasksForTodolist;
     }
-    if (filter === "completed") {
-      return (tasksForTodolist = tasks.filter((t) => t.isDone));
-    }
-    return tasksForTodolist;
   };
-
   // let tasksForTodolist = tasks;
 
   // if (filter === "active") {
